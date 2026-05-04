@@ -16,7 +16,6 @@ import ua.edu.ifntuog.studentportal.service.UserService;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -27,22 +26,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public User create(CreateUserRequest dto, RoleType roleType) {
+    public User create(CreateUserRequest dto) {
 
         if (userRepo.existsByEmail(dto.getEmail())) {
             throw new EntityAlreadyExistsException("User with email " + dto.getEmail() + " already exists");
         }
-
-        Role role = roleRepo.findByName(roleType)
-                .orElseThrow(() -> new EntityNotFoundException("Role not found: " + roleType));
 
         User user = User.builder()
                 .firstName(dto.getFirstName())
                 .lastName(dto.getLastName())
                 .email(dto.getEmail())
                 .password(dto.getPassword())
+                .roles(new HashSet<>())
                 .createdAt(LocalDateTime.now())
-                .roles(new HashSet<>(Set.of(role)))
                 .build();
 
         return userRepo.save(user);
@@ -82,6 +78,27 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean existsByEmail(String email) {
         return userRepo.existsByEmail(email);
+    }
+
+    @Override
+    @Transactional
+    public boolean addRole(Long userId, RoleType roleType) {
+        User user = getById(userId);
+
+        Role role = roleRepo.findByName(roleType)
+                .orElseThrow(() -> new EntityNotFoundException("Role not found: " + roleType));
+        return user.getRoles().add(role);
+    }
+
+    @Override
+    @Transactional
+    public boolean removeRole(Long userId, RoleType roleType) {
+        User user = getById(userId);
+
+        Role role = roleRepo.findByName(roleType)
+                .orElseThrow(() -> new EntityNotFoundException("Role not found: " + roleType));
+
+        return user.getRoles().remove(role);
     }
 
     private void updateUserFromDto(User dto, User user) {

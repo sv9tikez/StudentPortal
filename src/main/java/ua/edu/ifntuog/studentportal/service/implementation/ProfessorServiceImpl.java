@@ -7,10 +7,12 @@ import org.springframework.stereotype.Service;
 import ua.edu.ifntuog.studentportal.entity.Department;
 import ua.edu.ifntuog.studentportal.entity.Professor;
 import ua.edu.ifntuog.studentportal.entity.User;
+import ua.edu.ifntuog.studentportal.enums.RoleType;
 import ua.edu.ifntuog.studentportal.exception.EntityAlreadyExistsException;
 import ua.edu.ifntuog.studentportal.repository.DepartmentRepo;
 import ua.edu.ifntuog.studentportal.repository.ProfessorRepo;
 import ua.edu.ifntuog.studentportal.service.ProfessorService;
+import ua.edu.ifntuog.studentportal.service.UserService;
 
 import java.util.List;
 
@@ -18,6 +20,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProfessorServiceImpl implements ProfessorService {
 
+    private final UserService userService;
     private final ProfessorRepo professorRepo;
     private final DepartmentRepo departmentRepo;
 
@@ -29,6 +32,7 @@ public class ProfessorServiceImpl implements ProfessorService {
         }
 
         Professor professor = new Professor();
+        userService.addRole(user.getId(), RoleType.ROLE_PROFESSOR);
         professor.setUser(user);
         return professorRepo.save(professor);
     }
