@@ -3,14 +3,17 @@ package ua.edu.ifntuog.studentportal.service.implementation;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
-import ua.edu.ifntuog.studentportal.dto.CreateUserRequest;
+import ua.edu.ifntuog.studentportal.dto.*;
 import ua.edu.ifntuog.studentportal.entity.Role;
 import ua.edu.ifntuog.studentportal.entity.User;
 import ua.edu.ifntuog.studentportal.enums.RoleType;
 import ua.edu.ifntuog.studentportal.exception.EntityAlreadyExistsException;
 import ua.edu.ifntuog.studentportal.repository.RoleRepo;
 import ua.edu.ifntuog.studentportal.repository.UserRepo;
+
 import ua.edu.ifntuog.studentportal.service.UserService;
 
 import java.time.LocalDateTime;
@@ -23,15 +26,14 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepo userRepo;
     private final RoleRepo roleRepo;
+    private final ModelMapper modelMapper;
 
     @Override
     @Transactional
-    public User create(CreateUserRequest dto) {
-
+    public UserResponse save(CreateUserRequest dto) {
         if (userRepo.existsByEmail(dto.getEmail())) {
             throw new EntityAlreadyExistsException("User with email " + dto.getEmail() + " already exists");
         }
-
         User user = User.builder()
                 .firstName(dto.getFirstName())
                 .lastName(dto.getLastName())
@@ -40,71 +42,75 @@ public class UserServiceImpl implements UserService {
                 .roles(new HashSet<>())
                 .createdAt(LocalDateTime.now())
                 .build();
-
-        return userRepo.save(user);
+        return modelMapper.map(userRepo.save(user), UserResponse.class);
     }
 
     @Override
-    public User getById(Long id) {
-        return userRepo.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + id));
+    public UserResponse findById(Long id) {
+        return modelMapper.map(findUserById(id), UserResponse.class);
     }
 
     @Override
-    public User getByEmail(String email) {
-        return userRepo.findByEmail(email)
+    public UserResponse findByEmail(String email) {
+        User user = userRepo.findByEmail(email)
                 .orElseThrow(() -> new EntityNotFoundException("User not found with email: " + email));
+        return modelMapper.map(user, UserResponse.class);
     }
 
     @Override
-    public List<User> getAll() {
-        return userRepo.findAll();
+    public List<UserResponse> findAll() {
+        return modelMapper.map(userRepo.findAll(), new TypeToken<List<UserResponse>>() {
+        }.getType());
     }
 
     @Override
     @Transactional
-    public User update(Long id, User updated) {
-        User user = getById(id);
+    public void update(Long id, UpdateUserRequest updated) {
+        User user = findUserById(id);
         updateUserFromDto(updated, user);
-        return user;
+        userRepo.save(user);
     }
 
     @Override
+    @Transactional
     public void delete(Long id) {
-        User user = getById(id);
+        User user = findUserById(id);
         userRepo.delete(user);
     }
 
     @Override
-    public boolean existsByEmail(String email) {
-        return userRepo.existsByEmail(email);
+    @Transactional
+    public void addRole(Long userId, RoleType roleType) {
+        User user = findUserById(userId);
+        Role role = findRoleByName(roleType);
+        if (!user.getRoles().add(role)) {
+            throw new EntityAlreadyExistsException("User already has role: " + roleType);
+        }
     }
 
     @Override
     @Transactional
-    public boolean addRole(Long userId, RoleType roleType) {
-        User user = getById(userId);
-
-        Role role = roleRepo.findByName(roleType)
-                .orElseThrow(() -> new EntityNotFoundException("Role not found: " + roleType));
-        return user.getRoles().add(role);
+    public void removeRole(Long userId, RoleType roleType) {
+        User user = findUserById(userId);
+        Role role = findRoleByName(roleType);
+        if (!user.getRoles().remove(role)) {
+            throw new EntityNotFoundException("User does not have role: " + roleType);
+        }
     }
 
-    @Override
-    @Transactional
-    public boolean removeRole(Long userId, RoleType roleType) {
-        User user = getById(userId);
-
-        Role role = roleRepo.findByName(roleType)
-                .orElseThrow(() -> new EntityNotFoundException("Role not found: " + roleType));
-
-        return user.getRoles().remove(role);
+    private User findUserById(Long id) {
+        return userRepo.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + id));
     }
 
-    private void updateUserFromDto(User dto, User user) {
+    private Role findRoleByName(RoleType name) {
+        return roleRepo.findByName(name)
+                .orElseThrow(() -> new EntityNotFoundException("Role not found: " + name));
+    }
+
+    private void updateUserFromDto(UpdateUserRequest dto, User user) {
         user.setFirstName(dto.getFirstName());
         user.setLastName(dto.getLastName());
         user.setEmail(dto.getEmail());
-        user.setRoles(dto.getRoles());
     }
 }
