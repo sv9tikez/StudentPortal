@@ -15,4 +15,7 @@ public interface CourseRepo extends JpaRepository<Course, Long> {
 
     List<Course> findAllBySubjectId(Long subjectId);
 
+    boolean existsByYearAndSubject_IdAndProfessor_IdAndGroup_Id(
+            Integer year, Long subjectId, Long professorId, Long groupId);
+
 }
