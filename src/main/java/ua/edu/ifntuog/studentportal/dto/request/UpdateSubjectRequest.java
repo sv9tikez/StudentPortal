@@ -1,6 +1,5 @@
-package ua.edu.ifntuog.studentportal.dto;
+package ua.edu.ifntuog.studentportal.dto.request;
 
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,8 +9,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class UpdateDepartmentRequest {
-    @NotBlank
+public class UpdateSubjectRequest {
+
     private String name;
-    private Long facultyId;
+
+    private Integer credits;
+
+    private Integer hours;
+
+    private Long departmentId;
 }

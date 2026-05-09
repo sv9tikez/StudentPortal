@@ -6,9 +6,9 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
-import ua.edu.ifntuog.studentportal.dto.CourseRequest;
-import ua.edu.ifntuog.studentportal.dto.CourseResponse;
-import ua.edu.ifntuog.studentportal.dto.UpdateCourseRequest;
+import ua.edu.ifntuog.studentportal.dto.request.CourseRequest;
+import ua.edu.ifntuog.studentportal.dto.response.CourseResponse;
+import ua.edu.ifntuog.studentportal.dto.request.UpdateCourseRequest;
 import ua.edu.ifntuog.studentportal.entity.*;
 import ua.edu.ifntuog.studentportal.exception.DuplicateCourseException;
 import ua.edu.ifntuog.studentportal.repository.*;
@@ -32,7 +32,7 @@ public class CourseServiceImpl implements CourseService {
         checkForDuplicate(dto.getYear(), dto.getSubjectId(), dto.getProfessorId(), dto.getGroupId());
 
         Course course = new Course();
-        course.setSubject(findSubjectById(dto.getGroupId()));
+        course.setSubject(findSubjectById(dto.getSubjectId()));
         course.setProfessor(findProfessorById(dto.getProfessorId()));
         course.setGroup(findGroupById(dto.getGroupId()));
         return modelMapper.map(courseRepo.save(course), CourseResponse.class);

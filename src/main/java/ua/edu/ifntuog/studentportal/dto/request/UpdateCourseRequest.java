@@ -1,11 +1,9 @@
-package ua.edu.ifntuog.studentportal.dto;
+package ua.edu.ifntuog.studentportal.dto.request;
 
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Normalized;
 
 @AllArgsConstructor
 @NoArgsConstructor

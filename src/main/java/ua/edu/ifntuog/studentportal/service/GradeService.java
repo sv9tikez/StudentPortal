@@ -1,8 +1,8 @@
 package ua.edu.ifntuog.studentportal.service;
 
-import ua.edu.ifntuog.studentportal.dto.GradeResponse;
-import ua.edu.ifntuog.studentportal.dto.UpdateGradeRequest;
-import ua.edu.ifntuog.studentportal.dto.GradeRequest;
+import ua.edu.ifntuog.studentportal.dto.response.GradeResponse;
+import ua.edu.ifntuog.studentportal.dto.request.UpdateGradeRequest;
+import ua.edu.ifntuog.studentportal.dto.request.GradeRequest;
 
 import java.util.List;
 

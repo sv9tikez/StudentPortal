@@ -1,29 +1,26 @@
-package ua.edu.ifntuog.studentportal.dto;
+package ua.edu.ifntuog.studentportal.dto.request;
 
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.*;
 import ua.edu.ifntuog.studentportal.enums.GradeType;
 
 import java.time.LocalDate;
 
-@Data
-public class GradeRequest {
-    @NotNull
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+public class UpdateGradeRequest {
     @Min(0)
     @Max(100)
     private Integer grade;
 
-    @NotNull
     private GradeType type;
 
-    @NotNull
     private LocalDate date;
 
-    @NotNull
     private Long studentId;
 
-    @NotNull
     private Long courseId;
 }

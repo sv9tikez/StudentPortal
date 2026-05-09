@@ -1,4 +1,4 @@
-package ua.edu.ifntuog.studentportal.dto;
+package ua.edu.ifntuog.studentportal.dto.request;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

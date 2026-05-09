@@ -1,4 +1,4 @@
-package ua.edu.ifntuog.studentportal.dto;
+package ua.edu.ifntuog.studentportal.dto.response;
 
 import lombok.*;
 
@@ -9,9 +9,7 @@ import lombok.*;
 @Setter
 @Builder
 @EqualsAndHashCode
-public class GroupResponse {
+public class FacultyResponse {
     private Long id;
     private String name;
-    private Integer year;
-    private String departmentName;
 }

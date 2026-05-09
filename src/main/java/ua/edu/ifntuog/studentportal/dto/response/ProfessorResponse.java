@@ -1,4 +1,4 @@
-package ua.edu.ifntuog.studentportal.dto;
+package ua.edu.ifntuog.studentportal.dto.response;
 
 import lombok.*;
 import ua.edu.ifntuog.studentportal.enums.RoleType;
@@ -12,11 +12,12 @@ import java.util.Set;
 @Setter
 @Builder
 @EqualsAndHashCode
-public class StudentResponse {
+public class ProfessorResponse {
     private Long id;
     private String firstName;
     private String lastName;
     private String email;
+    private String academicTitle;
     private Set<RoleType> roles;
-    private String groupName;
+    private String departmentName;
 }

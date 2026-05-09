@@ -1,8 +1,8 @@
 package ua.edu.ifntuog.studentportal.service;
 
-import ua.edu.ifntuog.studentportal.dto.CreateUserRequest;
-import ua.edu.ifntuog.studentportal.dto.UpdateUserRequest;
-import ua.edu.ifntuog.studentportal.dto.UserResponse;
+import ua.edu.ifntuog.studentportal.dto.request.CreateUserRequest;
+import ua.edu.ifntuog.studentportal.dto.request.UpdateUserRequest;
+import ua.edu.ifntuog.studentportal.dto.response.UserResponse;
 import ua.edu.ifntuog.studentportal.enums.RoleType;
 
 import java.util.List;

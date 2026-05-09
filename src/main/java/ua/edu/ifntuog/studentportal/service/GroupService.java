@@ -1,8 +1,8 @@
 package ua.edu.ifntuog.studentportal.service;
 
-import ua.edu.ifntuog.studentportal.dto.GroupRequest;
-import ua.edu.ifntuog.studentportal.dto.GroupResponse;
-import ua.edu.ifntuog.studentportal.dto.UpdateGroupRequest;
+import ua.edu.ifntuog.studentportal.dto.request.GroupRequest;
+import ua.edu.ifntuog.studentportal.dto.response.GroupResponse;
+import ua.edu.ifntuog.studentportal.dto.request.UpdateGroupRequest;
 
 import java.util.List;
 

@@ -1,9 +1,8 @@
 package ua.edu.ifntuog.studentportal.service;
 
-import ua.edu.ifntuog.studentportal.dto.CourseRequest;
-import ua.edu.ifntuog.studentportal.dto.CourseResponse;
-import ua.edu.ifntuog.studentportal.dto.UpdateCourseRequest;
-import ua.edu.ifntuog.studentportal.entity.Course;
+import ua.edu.ifntuog.studentportal.dto.request.CourseRequest;
+import ua.edu.ifntuog.studentportal.dto.response.CourseResponse;
+import ua.edu.ifntuog.studentportal.dto.request.UpdateCourseRequest;
 
 import java.util.List;
 

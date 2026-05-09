@@ -1,4 +1,4 @@
-package ua.edu.ifntuog.studentportal.dto;
+package ua.edu.ifntuog.studentportal.dto.response;
 
 import lombok.*;
 import ua.edu.ifntuog.studentportal.enums.GradeType;

@@ -1,7 +1,7 @@
 package ua.edu.ifntuog.studentportal.service;
 
-import ua.edu.ifntuog.studentportal.dto.ProfessorResponse;
-import ua.edu.ifntuog.studentportal.dto.UpdateProfessorRequest;
+import ua.edu.ifntuog.studentportal.dto.response.ProfessorResponse;
+import ua.edu.ifntuog.studentportal.dto.request.UpdateProfessorRequest;
 
 import java.util.List;
 
