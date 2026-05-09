@@ -1,14 +1,21 @@
 package ua.edu.ifntuog.studentportal.service;
 
-import ua.edu.ifntuog.studentportal.entity.Subject;
+import ua.edu.ifntuog.studentportal.dto.SubjectRequest;
+import ua.edu.ifntuog.studentportal.dto.SubjectResponse;
+import ua.edu.ifntuog.studentportal.dto.UpdateSubjectRequest;
 
 import java.util.List;
 
 public interface SubjectService {
-    Subject create(Subject subject);
-    Subject getById(Long id);
-    List<Subject> getAll();
-    List<Subject> getAllByDepartmentId(Long departmentId);
-    Subject update(Long id, Subject subject);
+    SubjectResponse create(SubjectRequest subject);
+
+    SubjectResponse findById(Long id);
+
+    List<SubjectResponse> findAll();
+
+    List<SubjectResponse> findAllByDepartmentId(Long departmentId);
+
+    void update(Long id, UpdateSubjectRequest subject);
+
     void delete(Long id);
 }
