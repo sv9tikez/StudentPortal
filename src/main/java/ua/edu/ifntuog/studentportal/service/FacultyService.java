@@ -1,14 +1,20 @@
 package ua.edu.ifntuog.studentportal.service;
 
-import ua.edu.ifntuog.studentportal.entity.Faculty;
+import ua.edu.ifntuog.studentportal.dto.FacultyRequest;
+import ua.edu.ifntuog.studentportal.dto.FacultyResponse;
 
 import java.util.List;
 
 public interface FacultyService {
-    Faculty create(Faculty faculty);
-    Faculty getById(Long id);
-    Faculty getByName(String name);
-    List<Faculty> getAll();
-    Faculty update(Long id, Faculty faculty);
+    FacultyResponse create(FacultyRequest faculty);
+
+    FacultyResponse findById(Long id);
+
+    FacultyResponse findByName(String name);
+
+    List<FacultyResponse> findAll();
+
+    void update(Long id, FacultyRequest faculty);
+
     void delete(Long id);
 }
