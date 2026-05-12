@@ -9,7 +9,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class UpdateProfessorRequest extends UpdateUserRequest {
-    private Long departmentId;
+public class UpdateProfessorRequest {
     private String academicTitle;
 }
