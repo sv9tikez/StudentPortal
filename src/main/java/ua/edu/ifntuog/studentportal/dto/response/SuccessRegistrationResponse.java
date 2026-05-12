@@ -1,4 +1,4 @@
-package ua.edu.ifntuog.studentportal.dto;
+package ua.edu.ifntuog.studentportal.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

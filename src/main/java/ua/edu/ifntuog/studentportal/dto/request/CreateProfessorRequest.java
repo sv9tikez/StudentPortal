@@ -1,8 +1,7 @@
-package ua.edu.ifntuog.studentportal.dto;
+package ua.edu.ifntuog.studentportal.dto.request;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import ua.edu.ifntuog.studentportal.dto.request.CreateUserRequest;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
