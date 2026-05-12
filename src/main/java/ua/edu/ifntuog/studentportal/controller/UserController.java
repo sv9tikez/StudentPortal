@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ua.edu.ifntuog.studentportal.dto.*;
 import ua.edu.ifntuog.studentportal.dto.request.CreateUserRequest;
 import ua.edu.ifntuog.studentportal.dto.request.UpdateUserRequest;
 import ua.edu.ifntuog.studentportal.dto.response.UserResponse;
