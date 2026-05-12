@@ -7,7 +7,6 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
 import ua.edu.ifntuog.studentportal.dto.response.StudentResponse;
-import ua.edu.ifntuog.studentportal.dto.request.UpdateStudentRequest;
 import ua.edu.ifntuog.studentportal.entity.Group;
 import ua.edu.ifntuog.studentportal.entity.Student;
 import ua.edu.ifntuog.studentportal.entity.User;
@@ -63,18 +62,6 @@ public class StudentServiceImpl implements StudentService {
     public List<StudentResponse> findAllByGroupId(Long groupId) {
         return modelMapper.map(studentRepo.findAllByGroupId(groupId), new TypeToken<List<StudentResponse>>() {
         }.getType());
-    }
-
-    @Override
-    @Transactional
-    public void update(Long id, UpdateStudentRequest updated) {
-        Student student = findStudentById(id);
-        userService.update(id, updated);
-
-        if (updated.getGroupId() != null) {
-            student.setGroup(findGroupById(updated.getGroupId()));
-        }
-        studentRepo.save(student);
     }
 
     @Override

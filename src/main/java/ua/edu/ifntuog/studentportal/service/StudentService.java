@@ -1,7 +1,6 @@
 package ua.edu.ifntuog.studentportal.service;
 
 import ua.edu.ifntuog.studentportal.dto.response.StudentResponse;
-import ua.edu.ifntuog.studentportal.dto.request.UpdateStudentRequest;
 
 import java.util.List;
 
@@ -13,8 +12,6 @@ public interface StudentService {
     List<StudentResponse> findAll();
 
     List<StudentResponse> findAllByGroupId(Long groupId);
-
-    void update(Long id, UpdateStudentRequest updated);
 
     void delete(Long id);
 

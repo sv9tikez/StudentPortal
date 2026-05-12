@@ -70,12 +70,8 @@ public class ProfessorServiceImpl implements ProfessorService {
     @Transactional
     public void update(Long id, UpdateProfessorRequest updated) {
         Professor professor = findProfessorById(id);
-        userService.update(id, updated);
 
         if (updated.getAcademicTitle() != null) {
-            professor.setAcademicTitle(updated.getAcademicTitle());
-        }
-        if (updated.getDepartmentId() != null) {
             professor.setAcademicTitle(updated.getAcademicTitle());
         }
         professorRepo.save(professor);
