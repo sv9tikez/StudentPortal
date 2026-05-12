@@ -15,8 +15,8 @@ import java.time.LocalDate;
 public class GradeResponse {
     private Long id;
     private Integer grade;
-    GradeType type;
-    LocalDate date;
-    Long studentId;
-    Long courseId;
+    private GradeType type;
+    private LocalDate date;
+    private StudentShortResponse student;
+    private CourseShortResponse course;
 }

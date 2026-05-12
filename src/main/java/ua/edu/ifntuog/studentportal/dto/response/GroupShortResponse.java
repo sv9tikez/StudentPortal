@@ -1,16 +1,15 @@
 package ua.edu.ifntuog.studentportal.dto.response;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 @Getter
-@Setter
 @Builder
-@EqualsAndHashCode
-public class DepartmentResponse {
+public class GroupShortResponse {
     private Long id;
     private String name;
-    private FacultyResponse faculty;
 }

@@ -13,5 +13,5 @@ public class GroupResponse {
     private Long id;
     private String name;
     private Integer year;
-    private String departmentName;
+    private DepartmentShortResponse department;
 }

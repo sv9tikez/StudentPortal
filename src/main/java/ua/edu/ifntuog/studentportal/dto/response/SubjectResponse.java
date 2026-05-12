@@ -14,5 +14,5 @@ public class SubjectResponse {
     private String name;
     private Integer credits;
     private Integer hours;
-    private String departmentName;
+    private DepartmentShortResponse department;
 }

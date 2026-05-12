@@ -10,9 +10,9 @@ import lombok.*;
 @Builder
 @EqualsAndHashCode
 public class CourseResponse {
-    Long id;
-    Integer year;
-    String subjectName;
-    String professorFullName;
-    String groupName;
+    private Long id;
+    private Integer year;
+    private SubjectShortResponse subject;
+    private ProfessorShortResponse professor;
+    private GroupShortResponse group;
 }

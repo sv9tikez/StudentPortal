@@ -19,5 +19,5 @@ public class ProfessorResponse {
     private String email;
     private String academicTitle;
     private Set<RoleType> roles;
-    private String departmentName;
+    private DepartmentShortResponse department;
 }
