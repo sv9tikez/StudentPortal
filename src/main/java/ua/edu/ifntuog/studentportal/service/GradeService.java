@@ -1,16 +1,25 @@
 package ua.edu.ifntuog.studentportal.service;
 
-import ua.edu.ifntuog.studentportal.entity.Grade;
+import ua.edu.ifntuog.studentportal.dto.response.GradeResponse;
+import ua.edu.ifntuog.studentportal.dto.request.UpdateGradeRequest;
+import ua.edu.ifntuog.studentportal.dto.request.GradeRequest;
 
 import java.util.List;
 
 public interface GradeService {
-    Grade create(Grade grade);
-    Grade getById(Long id);
-    List<Grade> getAllByStudentId(Long studentId);
-    List<Grade> getAllByCourseId(Long courseId);
-    List<Grade> getAllByStudentIdAndCourseId(Long studentId, Long courseId);
-    Grade update(Long id, Grade grade);
+    GradeResponse create(GradeRequest grade);
+
+    GradeResponse findById(Long id);
+
+    List<GradeResponse> findAllByStudentId(Long studentId);
+
+    List<GradeResponse> findAllByCourseId(Long courseId);
+
+    List<GradeResponse> findAllByStudentIdAndCourseId(Long studentId, Long courseId);
+
+    void update(Long id, UpdateGradeRequest grade);
+
     void delete(Long id);
-    Double getAverageGradeByStudentId(Long studentId);
+
+    Double findAverageGradeByStudentId(Long studentId);
 }

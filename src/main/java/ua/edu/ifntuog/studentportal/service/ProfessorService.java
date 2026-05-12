@@ -1,16 +1,22 @@
 package ua.edu.ifntuog.studentportal.service;
 
-import ua.edu.ifntuog.studentportal.entity.Professor;
-import ua.edu.ifntuog.studentportal.entity.User;
+import ua.edu.ifntuog.studentportal.dto.response.ProfessorResponse;
+import ua.edu.ifntuog.studentportal.dto.request.UpdateProfessorRequest;
 
 import java.util.List;
 
 public interface ProfessorService {
-    Professor create(User user);
-    Professor getById(Long id);
-    List<Professor> getAll();
-    List<Professor> getAllByDepartmentId(Long departmentId);
-    Professor update(Long id, Professor professor);
+    ProfessorResponse save(Long userId, Long departmentId, String academicTitle);
+
+    ProfessorResponse findById(Long id);
+
+    List<ProfessorResponse> findAll();
+
+    List<ProfessorResponse> findAllByDepartmentId(Long departmentId);
+
+    void update(Long id, UpdateProfessorRequest updated);
+
     void delete(Long id);
-    Professor assignToDepartment(Long professorId, Long departmentId);
+
+    ProfessorResponse assignToDepartment(Long professorId, Long departmentId);
 }

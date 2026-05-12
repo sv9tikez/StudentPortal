@@ -1,0 +1,21 @@
+package ua.edu.ifntuog.studentportal.dto.response;
+
+import lombok.*;
+import ua.edu.ifntuog.studentportal.enums.RoleType;
+
+import java.util.Set;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+@Getter
+@Setter
+@Builder
+@EqualsAndHashCode
+public class UserResponse {
+    private Long id;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private Set<RoleType> roles;
+}

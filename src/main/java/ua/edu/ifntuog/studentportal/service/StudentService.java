@@ -1,16 +1,22 @@
 package ua.edu.ifntuog.studentportal.service;
 
-import ua.edu.ifntuog.studentportal.entity.Student;
-import ua.edu.ifntuog.studentportal.entity.User;
+import ua.edu.ifntuog.studentportal.dto.response.StudentResponse;
+import ua.edu.ifntuog.studentportal.dto.request.UpdateStudentRequest;
 
 import java.util.List;
 
 public interface StudentService {
-    Student create(User user);
-    Student getById(Long id);
-    List<Student> getAll();
-    List<Student> getAllByGroupId(Long groupId);
-    Student update(Long id, Student student);
+    StudentResponse save(Long userId, Long groupId);
+
+    StudentResponse findById(Long id);
+
+    List<StudentResponse> findAll();
+
+    List<StudentResponse> findAllByGroupId(Long groupId);
+
+    void update(Long id, UpdateStudentRequest updated);
+
     void delete(Long id);
-    Student assignToGroup(Long studentId, Long groupId);
+
+    StudentResponse assignToGroup(Long studentId, Long groupId);
 }
