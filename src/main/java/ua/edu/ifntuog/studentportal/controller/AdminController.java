@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ua.edu.ifntuog.studentportal.dto.CreateProfessorRequest;
-import ua.edu.ifntuog.studentportal.dto.CreateStudentRequest;
-import ua.edu.ifntuog.studentportal.dto.SuccessRegistrationResponse;
+import ua.edu.ifntuog.studentportal.dto.request.CreateProfessorRequest;
+import ua.edu.ifntuog.studentportal.dto.request.CreateStudentRequest;
+import ua.edu.ifntuog.studentportal.dto.response.SuccessRegistrationResponse;
 import ua.edu.ifntuog.studentportal.service.AdminService;
 
 @RestController
