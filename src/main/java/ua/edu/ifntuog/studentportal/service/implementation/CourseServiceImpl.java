@@ -32,6 +32,7 @@ public class CourseServiceImpl implements CourseService {
         checkForDuplicate(dto.getYear(), dto.getSubjectId(), dto.getProfessorId(), dto.getGroupId());
 
         Course course = new Course();
+        course.setYear(dto.getYear());
         course.setSubject(findSubjectById(dto.getSubjectId()));
         course.setProfessor(findProfessorById(dto.getProfessorId()));
         course.setGroup(findGroupById(dto.getGroupId()));
